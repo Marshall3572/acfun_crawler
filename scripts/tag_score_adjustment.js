@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb');
 const logger = require('../utils/loggers/logger');
 
 async function recalculateTagScores() {
-    const db = await MongoClient.connect('mongodb://localhost:27017/acfun');
+    const db = await MongoClient.connect('mongodb://127.0.0.1:27017/acfun');
     const cursor = db.collection('articles').find({}, { tags: 1 });
 
     while (await cursor.hasNext()) {

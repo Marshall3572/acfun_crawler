@@ -1,12 +1,10 @@
 require('./mongoose_service');
 const axios = require('axios');
 const cherrio = require('cheerio');
-const RedisService = require('./redis_service');
 const moment = require('moment');
 const jieba = require('nodejieba');
-
 const Article = require('../models/article');
-
+const RedisService = require('./content_id_service');
 class Tag {
     constructor(name, value, score) {
         this.name = name;
@@ -22,10 +20,10 @@ async function spideringArticles(count) {
     for (let id of ids) {
         await getSingleArticle(id)
             .then(e => {
-                succeedCount++;
+                succeedCount+=1;
             })
             .catch(e => {
-                errCount++;
+                errCount+=1;
                 if (e.errorCode !== 4040000) throw e;
             });
         await new Promise((rsv) => {

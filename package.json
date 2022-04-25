@@ -18,6 +18,8 @@
     "mongoose": "^5.13.8",
     "morgan": "~1.9.1",
     "nodejieba": "^2.6.0",
+    "redis-server": "^1.2.2",
+    "serve-favicon": "~2.4.5",
     "winston": "^2.4.0",
     "winston-daily-rotate-file": "^1.7.2"
   },
