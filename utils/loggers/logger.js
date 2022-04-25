@@ -1,4 +1,4 @@
-const loggerSetting = require('../../settings').logger;
+const loggerSetting = require('../../setting').logger;
 const winston = require('winston');
 require('winston-daily-rotate-file');
 

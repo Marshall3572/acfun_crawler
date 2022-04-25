@@ -1,9 +1,9 @@
-const loggerSetting = require('../../settings').logger;
+const loggerSetting = require('../../setting').logger;
 const winston = require('winston');
 require('winston-daily-rotate-file');
 
-const { Logger, transports } = winston;
-const { DailyRotateFile } = transports;
+const {Logger, transports} = winston;
+const {DailyRotateFile} = transports;
 
 const logger = new Logger({
     transports: [

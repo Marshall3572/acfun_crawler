@@ -1,9 +1,9 @@
-const { MongoClient } = require('mongodb');
+const {MongoClient} = require('mongodb');
 const logger = require('../utils/loggers/logger');
 
 async function recalculateTagScores() {
-    const db = await MongoClient.connect('mongodb://127.0.0.1:27017/acfun');
-    const cursor = db.collection('articles').find({}, { tags: 1 });
+    const db = await MongoClient.connect('mongodb://localhost:27018/acfun');
+    const cursor = db.collection('articles').find({}, {tags: 1});
 
     while (await cursor.hasNext()) {
         const doc = await cursor.next();
@@ -58,7 +58,7 @@ async function recalculateTagScores() {
         recaculatedTags.push(...userTags);
 
         await db.collection('articles')
-            .updateOne({ _id: doc._id }, { $set: { tags: recaculatedTags } });
+            .updateOne({_id: doc._id}, {$set: {tags: recaculatedTags}});
     }
 }
 
@@ -72,7 +72,7 @@ switch (process.argv[2]) {
                 console.log(e);
                 logger.error(
                     'error executing script for recalculating tag scores',
-                    { err: e },
+                    {err: e},
                 );
                 process.exit(1);
             });

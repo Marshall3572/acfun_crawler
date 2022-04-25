@@ -1,4 +1,3 @@
-// 定时执行的脚本，不会在主进程里执行起来，不会跟着http服务，可以操作爬去快慢
 const RedisService = require('../services/content_id_service');
 const Spider = require('../services/spider_service');
 
@@ -12,7 +11,7 @@ switch (process.argv[2] || process.env.NODE_ARGV_2) {
                 console.log('done');
                 process.exit(0);
             })
-            .catch(e => {
+            .catch((e) => {
                 console.log(e);
                 process.exit(1);
             });
@@ -42,7 +41,7 @@ switch (process.argv[2] || process.env.NODE_ARGV_2) {
 }
 
 async function getArticlesBG() {
-    const remainingCount = await RedisService.getRemainingIDCount()
+    const remainingCount = await RedisService.getRemainingIDCount();
     const numbersPerTime = 5;
     while (remainingCount >= 5) {
         await Spider.spideringArticles(numbersPerTime)

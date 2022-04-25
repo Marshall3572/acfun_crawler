@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const logger = require('../utils/loggers/app_logger');
-const mongoSettings = require('../settings').mongo;
+const mongoSettings = require('../setting').mongo;
 
 mongoose.Promise = Promise;
 
 const {uri} = mongoSettings;
-mongoose.connect(uri,{
+mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
